@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? 💖</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f7e1c3, #e0c3fc);
+            color: #333;
+            text-align: center;
+            overflow: hidden;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #d63384;
+            animation: slideIn 1.5s ease-in-out;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .yes-btn {
+            background-color: #ff69b4;
+            color: #fff;
+        }
+        .yes-btn:hover {
+            background-color: #ff1493;
+        }
+        .no-btn {
+            background-color: #fcd703;
+            color: #d62828;
+        }
+        .no-btn:hover {
+            background-color: #eec200;
+        }
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: pink;
+            clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 50% 75%, 20% 100%, 0% 30%);
+            animation: floatUp 5s infinite ease-in-out;
+        }
+        .teddy {
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            background-image: url('https://i.imgur.com/Y4XzVGR.png');
+            background-size: cover;
+            animation: teddyBounce 3s infinite ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes floatUp {
+            from { transform: translateY(100vh); opacity: 1; }
+            to { transform: translateY(-10vh); opacity: 0; }
+        }
+        @keyframes teddyBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-30px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine? 💘</h1>
+        <p>I've been waiting for this moment, and my heart races just thinking about you. Say yes and make this day unforgettable! 😍</p>
+        <div class="buttons">
+            <button class="yes-btn" onclick="showMessage('YES')">Yes, my love! ❤️</button>
+            <button class="no-btn" onclick="showMessage('NO')">No, but you're sweet! 😘</button>
+        </div>
+    </div>
+    <div class="hearts"></div>
+    <div class="teddy"></div>
+    <script>
+        function showMessage(answer) {
+            if (answer === 'YES') {
+                alert("You just made my heart the happiest! ❤️ You're the sparkle in my world!");
+            } else {
+                alert("Ouch! 💔 But hey, you're still the most wonderful person I've ever met!");
+            }
+        }
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.querySelector(".hearts").appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
